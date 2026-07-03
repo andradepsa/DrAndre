@@ -32,7 +32,7 @@
   .font-display { font-family: 'Fraunces', serif; }
 
   /* Imagens Reais Verificadas */
-  .img-hero { background-image: linear-gradient(180deg, rgba(4, 28, 50, 0.75) 0%, rgba(4, 28, 50, 0.35) 50%, var(--bg) 100%), url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; }
+  .img-hero { background-image: linear-gradient(180deg, rgba(4, 22, 40, 0.92) 0%, rgba(4, 22, 40, 0.78) 45%, rgba(4, 22, 40, 0.65) 75%, var(--bg) 100%), url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; }
   .img-about { background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop'); background-size: cover; background-position: center; }
   
   .gallery-1 { background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRMvzOgcB-jjTsuKSHmPsvyvghIJcMkjzn4jCLboQOL9YVZ6nZsFuJlBHhNbBWh5oi4Le4h833ams0dy0cUzn3DPinolPVTtzMjYznkhU8co5amkX-rEL1sSd9fjpoxaKv_0gzbMizWQwcV6y0BdjN9CzYLzeVCEetFpa_f-YMoxLmwNyMp6XhX1529fK-/s1600/consultorio-dr-andre-carrera-e-dra-nathalia-carrera-3550-BdWA.jpg'); background-size: cover; background-position: center; }
@@ -72,16 +72,16 @@
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px -8px rgba(0, 119, 182, 0.6); }
   .btn-primary:hover::before { left: 100%; }
   .btn-outline { background: transparent; color: var(--accent-deep); border: 1px solid var(--accent-deep); padding: 13px 31px; border-radius: 999px; font-weight: 600; transition: all 0.3s; display: inline-flex; align-items: center; gap: 12px; }
-  .btn-outline:hover { background: var(--bg-soft); color: var(--accent-deep); border-color: var(--accent-deep); }
+  .btn-outline:hover { background: var(--bg-soft); color: var(--accent-deep) !important; border-color: var(--accent-deep) !important; }
 
   .hero-overlay-grid { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 60px 60px; }
 
   .particle { position: absolute; background: var(--accent-bright); border-radius: 50%; pointer-events: none; opacity: 0; box-shadow: 0 0 8px var(--accent-bright); animation: rise linear infinite; }
   @keyframes rise { 0% { transform: translateY(0) scale(0.5); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { transform: translateY(-100vh) scale(1.2); opacity: 0; } }
 
-  .headline-accent { background: linear-gradient(120deg, var(--accent-bright) 0%, var(--accent) 50%, var(--mint) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; font-weight: 400; }
+  .headline-accent { background: linear-gradient(120deg, var(--accent-bright) 0%, var(--accent-bright) 35%, var(--mint) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; font-weight: 400; }
   .deco-line { display: inline-flex; align-items: center; gap: 14px; color: var(--accent-deep); font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; font-weight: 600; }
-  .deco-line::before, .deco-line::after { content: ''; width: 40px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-deep), transparent); }
+  .deco-line::before, .deco-line::after { content: ''; width: 40px; height: 1px; background: linear-gradient(90deg, transparent, currentColor, transparent); }
   .deco-line.left::before { display: none; }
 
   .service-card { position: relative; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 24px; padding: 40px 32px; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); overflow: hidden; box-shadow: 0 10px 30px -15px rgba(12, 42, 67, 0.1); }
@@ -103,7 +103,7 @@
   .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; } .reveal-delay-3 { transition-delay: 0.3s; } .reveal-delay-4 { transition-delay: 0.4s; }
 
   .diff-item { border-left: 1px solid var(--border); padding: 24px 32px; transition: all 0.4s; cursor: default; }
-  .diff-item:hover { border-left-color: var(--accent); background: linear-gradient(90deg, var(--bg-soft), transparent); }
+  .diff-item:hover { border-left-color: var(--accent); background: linear-gradient(90deg, var(--bg-alt), transparent); }
   .diff-item:hover .diff-num { color: var(--accent-deep); transform: translateX(4px); }
   .diff-num { font-family: 'Fraunces', serif; font-size: 14px; color: var(--muted); transition: all 0.4s; letter-spacing: 0.2em; }
 
@@ -192,21 +192,21 @@
       <h1 class="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] font-light mb-8 reveal visible reveal-delay-1 text-white">
         Sorrisos que<br><span class="headline-accent">contam histórias</span><br>de confiança.
       </h1>
-      <p class="text-lg md:text-xl text-gray-200 max-w-2xl mb-10 leading-relaxed reveal visible reveal-delay-2">
+      <p class="text-lg md:text-xl text-white/95 max-w-2xl mb-10 leading-relaxed reveal visible reveal-delay-2 drop-shadow-md">
         No Consultório André Carrera Odontologia, unimos tecnologia, técnica refinada e acolhimento humano para devolver a você a alegria de sorrir com plenitude.
       </p>
       <div class="flex flex-wrap gap-4 reveal visible reveal-delay-3">
         <a href="#agendamento" class="btn-primary">Agende sua avaliação<i class="fas fa-arrow-right text-sm"></i></a>
-        <a href="#espaco" class="btn-outline" style="color:#fff; border-color:rgba(255,255,255,0.5);"><i class="fas fa-tooth text-sm"></i>Conheça o espaço</a>
+        <a href="#espaco" class="btn-outline" style="color:#fff; border-color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.08); backdrop-filter: blur(6px);"><i class="fas fa-tooth text-sm"></i>Conheça o espaço</a>
       </div>
       <div class="mt-16 flex flex-wrap gap-x-12 gap-y-6 reveal visible reveal-delay-4">
-        <div class="flex items-center gap-3"><div class="pulse-dot"></div><span class="text-sm text-gray-200">Seg a Qui: 09h às 19h</span></div>
-        <div class="flex items-center gap-3"><i class="fas fa-tools text-[var(--accent-bright)] text-sm"></i><span class="text-sm text-gray-200">Tecnologia diagnóstica própria</span></div>
-        <div class="flex items-center gap-3"><i class="fas fa-users text-[var(--mint)] text-sm"></i><span class="text-sm text-gray-200">Equipe de 3 especialistas</span></div>
+        <div class="flex items-center gap-3"><div class="pulse-dot"></div><span class="text-sm text-white font-medium">Seg a Qui: 09h às 19h</span></div>
+        <div class="flex items-center gap-3"><i class="fas fa-tools text-[var(--accent-bright)] text-sm"></i><span class="text-sm text-white font-medium">Tecnologia diagnóstica própria</span></div>
+        <div class="flex items-center gap-3"><i class="fas fa-users text-[var(--mint)] text-sm"></i><span class="text-sm text-white font-medium">Equipe de 3 especialistas</span></div>
       </div>
     </div>
     <div class="hidden lg:flex absolute bottom-10 right-10 flex-col items-center gap-3">
-      <span class="text-[10px] tracking-[0.3em] text-gray-300 uppercase rotate-180" style="writing-mode:vertical-rl;">Role para descobrir</span>
+      <span class="text-[10px] tracking-[0.3em] text-white/80 uppercase rotate-180 font-semibold" style="writing-mode:vertical-rl;">Role para descobrir</span>
       <div class="scroll-indicator"></div>
     </div>
   </div>
