@@ -1,90 +1,627 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Em Construção</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>André Carrera Odontologia | Consultório no Parque Uirapuru</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
+<style>
+  :root {
+    --bg: #F0F7FA;
+    --bg-alt: #FFFFFF;
+    --bg-soft: #E1F0FA;
+    --fg: #0C2A43;
+    --fg-dim: #3D5A73;
+    --muted: #7B96AD;
+    --accent: #00A6E0;
+    --accent-bright: #2BC4F0;
+    --accent-deep: #0077B6;
+    --mint: #00BFA6;
+    --border: rgba(12, 42, 67, 0.1);
+    --border-strong: rgba(0, 166, 224, 0.4);
+  }
+  
+  * { -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--fg); overflow-x: hidden; line-height: 1.6; }
+  .font-display { font-family: 'Fraunces', serif; }
 
-        .container {
-            max-width: 600px;
-            padding: 40px;
-        }
+  /* Imagens Reais Verificadas */
+  .img-hero { background-image: linear-gradient(180deg, rgba(4, 22, 40, 0.92) 0%, rgba(4, 22, 40, 0.78) 45%, rgba(4, 22, 40, 0.65) 75%, var(--bg) 100%), url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; }
+  .img-about { background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop'); background-size: cover; background-position: center; }
+  
+  .gallery-1 { background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRMvzOgcB-jjTsuKSHmPsvyvghIJcMkjzn4jCLboQOL9YVZ6nZsFuJlBHhNbBWh5oi4Le4h833ams0dy0cUzn3DPinolPVTtzMjYznkhU8co5amkX-rEL1sSd9fjpoxaKv_0gzbMizWQwcV6y0BdjN9CzYLzeVCEetFpa_f-YMoxLmwNyMp6XhX1529fK-/s1600/consultorio-dr-andre-carrera-e-dra-nathalia-carrera-3550-BdWA.jpg'); background-size: cover; background-position: center; }
+  .gallery-2 { background-image: url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?q=80&w=800&auto=format&fit=crop'); background-size: cover; background-position: center; }
+  .gallery-3 { background-image: url('https://images.unsplash.com/photo-1581585099522-f6ac2efe6e5c?q=80&w=800&auto=format&fit=crop'); background-size: cover; background-position: center; }
+  .gallery-4 { background-image: url('https://sfile.chatglm.cn/images-ppt/66251efc6108.jpeg'); background-size: cover; background-position: center; }
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
+  /* Cards dos Dentistas */
+  .doc-card-1 { background: linear-gradient(135deg, #0077B6 0%, #00A6E0 100%); }
+  .doc-card-2 { background: linear-gradient(135deg, #00BFA6 0%, #0077B6 100%); }
+  .doc-card-3 { background: linear-gradient(135deg, #0C2A43 0%, #0077B6 100%); }
+  
+  .doc-monogram {
+    position: absolute; top: -20px; right: -10px;
+    font-family: 'Fraunces', serif; font-weight: 300; font-size: 180px; line-height: 1;
+    color: rgba(255,255,255,0.1); pointer-events: none; user-select: none;
+  }
+  .doc-icon-circle {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px; transition: transform 0.4s;
+  }
+  .doc-card:hover .doc-icon-circle { transform: scale(1.05) rotate(-5deg); }
 
-        p {
-            font-size: 1.2rem;
-            color: #cbd5e1;
-            margin-bottom: 30px;
-        }
+  .grain::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.04 0 0 0 0 0.16 0 0 0 0 0.26 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: 1; mix-blend-mode: multiply; }
+  .glow-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.25; pointer-events: none; animation: float-orb 18s ease-in-out infinite; }
+  @keyframes float-orb { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px,-30px) scale(1.15); } }
 
-        .emoji {
-            font-size: 5rem;
-            margin-bottom: 20px;
-        }
+  .nav-glass { background: rgba(240, 247, 250, 0.85); backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid var(--border); }
+  .nav-link { position: relative; color: var(--fg-dim); transition: color 0.3s; }
+  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: var(--accent); transition: width 0.4s ease; }
+  .nav-link:hover { color: var(--accent-deep); } .nav-link:hover::after { width: 100%; }
 
-        .loader {
-            width: 70px;
-            height: 70px;
-            border: 6px solid rgba(255,255,255,0.2);
-            border-top: 6px solid #38bdf8;
-            border-radius: 50%;
-            margin: auto;
-            animation: girar 1s linear infinite;
-        }
+  .btn-primary { background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent-deep) 100%); color: #FFFFFF; font-weight: 700; letter-spacing: 0.02em; padding: 14px 32px; border-radius: 999px; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 8px 24px -8px rgba(0, 119, 182, 0.5); display: inline-flex; align-items: center; gap: 12px; }
+  .btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: left 0.6s; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px -8px rgba(0, 119, 182, 0.6); }
+  .btn-primary:hover::before { left: 100%; }
+  .btn-outline { background: transparent; color: var(--accent-deep); border: 1px solid var(--accent-deep); padding: 13px 31px; border-radius: 999px; font-weight: 600; transition: all 0.3s; display: inline-flex; align-items: center; gap: 12px; }
+  .btn-outline:hover { background: var(--bg-soft); color: var(--accent-deep) !important; border-color: var(--accent-deep) !important; }
 
-        @keyframes girar {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+  .hero-overlay-grid { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 60px 60px; }
 
-        footer {
-            margin-top: 40px;
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
-    </style>
+  .particle { position: absolute; background: var(--accent-bright); border-radius: 50%; pointer-events: none; opacity: 0; box-shadow: 0 0 8px var(--accent-bright); animation: rise linear infinite; }
+  @keyframes rise { 0% { transform: translateY(0) scale(0.5); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { transform: translateY(-100vh) scale(1.2); opacity: 0; } }
+
+  .headline-accent { background: linear-gradient(120deg, var(--accent-bright) 0%, var(--accent-bright) 35%, var(--mint) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; font-weight: 400; }
+  .deco-line { display: inline-flex; align-items: center; gap: 14px; color: var(--accent-deep); font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; font-weight: 600; }
+  .deco-line::before, .deco-line::after { content: ''; width: 40px; height: 1px; background: linear-gradient(90deg, transparent, currentColor, transparent); }
+  .deco-line.left::before { display: none; }
+
+  .service-card { position: relative; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 24px; padding: 40px 32px; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); overflow: hidden; box-shadow: 0 10px 30px -15px rgba(12, 42, 67, 0.1); }
+  .service-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at var(--mx,50%) var(--my,0%), rgba(0, 166, 224, 0.1), transparent 50%); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+  .service-card:hover { transform: translateY(-6px); border-color: var(--border-strong); box-shadow: 0 20px 40px -15px rgba(0, 119, 182, 0.2); }
+  .service-card:hover::before { opacity: 1; }
+  .service-card:hover .service-icon { transform: rotate(-8deg) scale(1.1); color: var(--bg-alt); background: var(--accent); border-color: var(--accent); }
+  .service-icon { width: 64px; height: 64px; border-radius: 16px; background: var(--bg-soft); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--accent-deep); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+
+  .stat-num { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(48px, 6vw, 80px); line-height: 1; background: linear-gradient(180deg, var(--accent-bright), var(--accent-deep)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+  .gallery-item { position: relative; border-radius: 1.5rem; overflow: hidden; border: 1px solid var(--border); transition: all 0.5s; box-shadow: 0 10px 30px -15px rgba(12, 42, 67, 0.1); }
+  .gallery-item:hover { border-color: var(--border-strong); }
+  .gallery-inner { width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+  .gallery-item:hover .gallery-inner { transform: scale(1.05); }
+
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; } .reveal-delay-3 { transition-delay: 0.3s; } .reveal-delay-4 { transition-delay: 0.4s; }
+
+  .diff-item { border-left: 1px solid var(--border); padding: 24px 32px; transition: all 0.4s; cursor: default; }
+  .diff-item:hover { border-left-color: var(--accent); background: linear-gradient(90deg, var(--bg-alt), transparent); }
+  .diff-item:hover .diff-num { color: var(--accent-deep); transform: translateX(4px); }
+  .diff-num { font-family: 'Fraunces', serif; font-size: 14px; color: var(--muted); transition: all 0.4s; letter-spacing: 0.2em; }
+
+  .testimonial-track { display: flex; transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .testimonial-card { flex: 0 0 100%; padding: 0 16px; box-sizing: border-box; }
+  .testimonial-inner { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 28px; padding: 48px 56px; position: relative; overflow: hidden; box-shadow: 0 10px 30px -15px rgba(12, 42, 67, 0.1); }
+  .testimonial-inner::before { content: '"'; position: absolute; top: -20px; left: 24px; font-family: 'Fraunces', serif; font-size: 200px; color: var(--bg-soft); opacity: 0.8; line-height: 1; }
+  .star { color: var(--accent); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-strong); transition: all 0.3s; cursor: pointer; }
+  .dot.active { width: 32px; border-radius: 4px; background: var(--accent); }
+
+  .mobile-menu { transform: translateX(100%); transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+  .mobile-menu.open { transform: translateX(0); }
+
+  .scroll-indicator { width: 2px; height: 60px; background: linear-gradient(180deg, var(--accent-bright), transparent); position: relative; overflow: hidden; }
+  .scroll-indicator::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 30%; background: var(--bg-alt); animation: scrollDown 2.5s ease-in-out infinite; }
+  @keyframes scrollDown { 0% { top: -30%; } 100% { top: 100%; } }
+
+  .pulse-dot { width: 8px; height: 8px; background: var(--mint); border-radius: 50%; position: relative; }
+  .pulse-dot::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--mint); animation: pulse 2s ease-out infinite; }
+  @keyframes pulse { 0% { transform: scale(0.8); opacity: 1; } 100% { transform: scale(2); opacity: 0; } }
+
+  .float-y { animation: floatY 6s ease-in-out infinite; }
+  @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+  ::selection { background: var(--accent); color: var(--bg-alt); }
+  ::-webkit-scrollbar { width: 10px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--accent-deep); border-radius: 5px; }
+</style>
 </head>
-<body>
+<body class="grain">
 
-    <div class="container">
-        <div class="emoji">🚧</div>
-
-        <h1>EM CONSTRUÇÃO</h1>
-
-        <p>
-            Estamos trabalhando para trazer novidades em breve.<br>
-            Volte em alguns dias.
-        </p>
-
-        <div class="loader"></div>
-
-        <footer>
-            &copy; 2026 - Todos os direitos reservados.
-        </footer>
+<nav id="navbar" class="nav-glass fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
+    <a href="#hero" class="flex items-center gap-3 group">
+      <div class="relative w-11 h-11 rounded-full bg-[var(--accent-deep)] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-bright)] to-[var(--accent-deep)]"></div>
+        <span class="font-display text-xl text-white relative z-10">C</span>
+      </div>
+      <div class="leading-tight">
+        <div class="font-display text-lg tracking-wide text-[var(--fg)]">André Carrera</div>
+        <div class="text-[10px] tracking-[0.3em] text-[var(--accent-deep)] uppercase font-bold">Odontologia</div>
+      </div>
+    </a>
+    <div class="hidden lg:flex items-center gap-9 text-sm font-medium">
+      <a href="#sobre" class="nav-link">Sobre</a>
+      <a href="#espaco" class="nav-link">Espaço</a>
+      <a href="#servicos" class="nav-link">Tratamentos</a>
+      <a href="#dentistas" class="nav-link">Especialistas</a>
+      <a href="#depoimentos" class="nav-link">Depoimentos</a>
+      <a href="#contato" class="nav-link">Contato</a>
     </div>
+    <div class="hidden lg:flex items-center gap-4">
+      <a href="https://wa.me/5511974857543" class="flex items-center gap-2 text-sm text-[var(--fg-dim)] hover:text-[var(--accent-deep)] transition">
+        <i class="fab fa-whatsapp text-[var(--mint)] text-base"></i><span>+55 11 97485-7543</span>
+      </a>
+      <a href="#agendamento" class="btn-primary text-sm">Agendar consulta</a>
+    </div>
+    <button id="menuToggle" class="lg:hidden text-[var(--fg)] text-2xl"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<div id="mobileMenu" class="mobile-menu fixed inset-0 z-40 lg:hidden bg-[var(--bg-alt)] p-8 pt-24">
+  <div class="flex flex-col gap-6 text-2xl font-display">
+    <a href="#sobre" class="mobile-link text-[var(--fg-dim)] hover:text-[var(--accent-deep)]">Sobre</a>
+    <a href="#espaco" class="mobile-link text-[var(--fg-dim)] hover:text-[var(--accent-deep)]">Espaço</a>
+    <a href="#servicos" class="mobile-link text-[var(--fg-dim)] hover:text-[var(--accent-deep)]">Tratamentos</a>
+    <a href="#dentistas" class="mobile-link text-[var(--fg-dim)] hover:text-[var(--accent-deep)]">Especialistas</a>
+    <a href="#depoimentos" class="mobile-link text-[var(--fg-dim)] hover:text-[var(--accent-deep)]">Depoimentos</a>
+    <a href="#contato" class="mobile-link text-[var(--fg-dim)] hover:text-[var(--accent-deep)]">Contato</a>
+  </div>
+  <div class="mt-12 pt-8 border-t border-[var(--border)]">
+    <a href="https://wa.me/5511974857543" class="flex items-center gap-3 text-[var(--accent-deep)] mb-4"><i class="fab fa-whatsapp"></i><span>+55 11 97485-7543</span></a>
+    <a href="#agendamento" class="btn-primary mobile-link">Agendar consulta</a>
+  </div>
+</div>
+
+<header id="hero" class="img-hero relative min-h-screen flex items-center pt-24 overflow-hidden">
+  <div class="absolute inset-0 hero-overlay-grid opacity-50"></div>
+  <div class="glow-orb" style="width:500px;height:500px;background:#00A6E0;top:-100px;left:-150px;"></div>
+  <div class="glow-orb" style="width:400px;height:400px;background:#00BFA6;bottom:-100px;right:-100px;animation-delay:-9s;"></div>
+  <div id="particles" class="absolute inset-0 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10 w-full">
+    <div class="max-w-4xl">
+      <div class="reveal visible"><div class="deco-line left mb-8" style="color:#2BC4F0;"><span style="color:#2BC4F0;">Parque Uirapuru · Guarulhos</span></div></div>
+      <h1 class="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] font-light mb-8 reveal visible reveal-delay-1 text-white">
+        Sorrisos que<br><span class="headline-accent">contam histórias</span><br>de confiança.
+      </h1>
+      <p class="text-lg md:text-xl text-white/95 max-w-2xl mb-10 leading-relaxed reveal visible reveal-delay-2 drop-shadow-md">
+        No Consultório André Carrera Odontologia, unimos tecnologia, técnica refinada e acolhimento humano para devolver a você a alegria de sorrir com plenitude.
+      </p>
+      <div class="flex flex-wrap gap-4 reveal visible reveal-delay-3">
+        <a href="#agendamento" class="btn-primary">Agende sua avaliação<i class="fas fa-arrow-right text-sm"></i></a>
+        <a href="#espaco" class="btn-outline" style="color:#fff; border-color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.08); backdrop-filter: blur(6px);"><i class="fas fa-tooth text-sm"></i>Conheça o espaço</a>
+      </div>
+      <div class="mt-16 flex flex-wrap gap-x-12 gap-y-6 reveal visible reveal-delay-4">
+        <div class="flex items-center gap-3"><div class="pulse-dot"></div><span class="text-sm text-white font-medium">Seg a Qui: 09h às 19h</span></div>
+        <div class="flex items-center gap-3"><i class="fas fa-tools text-[var(--accent-bright)] text-sm"></i><span class="text-sm text-white font-medium">Tecnologia diagnóstica própria</span></div>
+        <div class="flex items-center gap-3"><i class="fas fa-users text-[var(--mint)] text-sm"></i><span class="text-sm text-white font-medium">Equipe de 3 especialistas</span></div>
+      </div>
+    </div>
+    <div class="hidden lg:flex absolute bottom-10 right-10 flex-col items-center gap-3">
+      <span class="text-[10px] tracking-[0.3em] text-white/80 uppercase rotate-180 font-semibold" style="writing-mode:vertical-rl;">Role para descobrir</span>
+      <div class="scroll-indicator"></div>
+    </div>
+  </div>
+</header>
+
+<section class="relative py-20 border-y border-[var(--border)] bg-[var(--bg-alt)]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="reveal text-center lg:text-left"><div class="stat-num" data-count="35">0</div><div class="text-sm text-[var(--muted)] mt-2 tracking-wider uppercase">Anos de experiência</div></div>
+      <div class="reveal reveal-delay-1 text-center lg:text-left"><div class="stat-num" data-count="35000">0</div><div class="text-sm text-[var(--muted)] mt-2 tracking-wider uppercase">Sorrisos transformados</div></div>
+      <div class="reveal reveal-delay-2 text-center lg:text-left"><div class="stat-num" data-count="3">0</div><div class="text-sm text-[var(--muted)] mt-2 tracking-wider uppercase">Especialistas no time</div></div>
+      <div class="reveal reveal-delay-3 text-center lg:text-left"><div class="stat-num"><span data-count="99">0</span>%</div><div class="text-sm text-[var(--muted)] mt-2 tracking-wider uppercase">Pacientes satisfeitos</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre" class="relative py-28 overflow-hidden">
+  <div class="glow-orb" style="width:400px;height:400px;background:#00A6E0;top:200px;right:-200px;opacity:0.15;"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div class="reveal relative">
+        <div class="relative rounded-[2rem] overflow-hidden border border-[var(--border)] h-[520px] img-about shadow-2xl"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg)]/40 via-transparent to-transparent pointer-events-none rounded-[2rem]"></div>
+        <div class="absolute -bottom-8 -right-4 lg:-right-12 bg-[var(--bg-alt)] border border-[var(--border-strong)] rounded-2xl p-6 max-w-[240px] shadow-2xl float-y">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--accent-bright)] to-[var(--accent-deep)] flex items-center justify-center"><i class="fas fa-award text-white text-sm"></i></div>
+            <span class="font-display text-lg text-[var(--fg)]">Excelência</span>
+          </div>
+          <p class="text-xs text-[var(--muted)] leading-relaxed">Protocolos clínicos baseados em evidências e materiais de primeira linha.</p>
+        </div>
+      </div>
+      <div>
+        <div class="reveal deco-line left mb-8"><span>Sobre o consultório</span></div>
+        <h2 class="reveal font-display text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-8 text-[var(--fg)]">Um espaço onde a <span class="headline-accent">odontologia</span> encontra o cuidado genuíno.</h2>
+        <p class="reveal reveal-delay-1 text-[var(--fg-dim)] mb-6 leading-relaxed">Localizado no coração do Parque Uirapuru, em Guarulhos, nosso consultório nasceu do desejo de oferecer uma odontologia que vai além do técnico: queremos conhecer cada paciente, entender suas necessidades e construir juntos um plano de tratamento transparente e eficaz.</p>
+        <p class="reveal reveal-delay-2 text-[var(--fg-dim)] mb-10 leading-relaxed">Cada detalhe do espaço foi pensado para o seu conforto — do ambiente acolhedor aos equipamentos de última geração. Aqui, sua saúde bucal está em mãos especializadas.</p>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="reveal reveal-delay-2 flex gap-4"><div class="service-icon !w-12 !h-12 !text-xl shrink-0"><i class="fas fa-microscope"></i></div><div><h4 class="font-semibold text-[var(--fg)] mb-1">Diagnóstico preciso</h4><p class="text-sm text-[var(--muted)] leading-relaxed">Exames digitais e análise minuciosa.</p></div></div>
+          <div class="reveal reveal-delay-3 flex gap-4"><div class="service-icon !w-12 !h-12 !text-xl shrink-0"><i class="fas fa-shield-heart"></i></div><div><h4 class="font-semibold text-[var(--fg)] mb-1">Biossegurança</h4><p class="text-sm text-[var(--muted)] leading-relaxed">Protocolos rigorosos de esterilização.</p></div></div>
+          <div class="reveal reveal-delay-3 flex gap-4"><div class="service-icon !w-12 !h-12 !text-xl shrink-0"><i class="fas fa-hand-holding-heart"></i></div><div><h4 class="font-semibold text-[var(--fg)] mb-1">Acolhimento</h4><p class="text-sm text-[var(--muted)] leading-relaxed">Atendimento humanizado em cada visita.</p></div></div>
+          <div class="reveal reveal-delay-4 flex gap-4"><div class="service-icon !w-12 !h-12 !text-xl shrink-0"><i class="fas fa-clock"></i></div><div><h4 class="font-semibold text-[var(--fg)] mb-1">Pontualidade</h4><p class="text-sm text-[var(--muted)] leading-relaxed">Respeito ao seu tempo e agenda.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="espaco" class="relative py-28 bg-[var(--bg-soft)] overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <div class="reveal deco-line mb-8 mx-auto justify-center"><span>Galeria de Resultados</span></div>
+      <h2 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-6 text-[var(--fg)]">A arte de cuidar de <span class="headline-accent">sorrisos</span>.</h2>
+      <p class="reveal reveal-delay-2 text-[var(--fg-dim)] text-lg">Um ambiente desenhado para o seu conforto, com tecnologia de ponta e resultados que falam por si.</p>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 h-auto lg:h-[520px]">
+      <div class="gallery-item reveal h-64 lg:h-full lg:col-span-2 lg:row-span-2">
+        <div class="gallery-inner gallery-1 w-full h-full"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--fg)]/90 via-transparent to-transparent flex items-end p-6">
+          <div><div class="text-xs tracking-[0.2em] text-[var(--accent-bright)] uppercase mb-1">Nosso Consultório</div><h3 class="font-display text-2xl text-white">Tecnologia e aconchego</h3></div>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1 h-64 lg:h-[252px]">
+        <div class="gallery-inner gallery-4 w-full h-full"></div>
+        <div class="absolute inset-0 bg-[var(--fg)]/40 flex items-end p-5">
+          <div><div class="text-xs tracking-[0.2em] text-[var(--mint)] uppercase mb-1">Atendimento</div><h3 class="font-display text-lg text-white">Foco no paciente</h3></div>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2 h-64 lg:h-[252px]">
+        <div class="gallery-inner gallery-2 w-full h-full"></div>
+        <div class="absolute inset-0 bg-[var(--fg)]/40 flex items-end p-5">
+          <div><div class="text-xs tracking-[0.2em] text-[var(--accent-bright)] uppercase mb-1">Equipamentos</div><h3 class="font-display text-lg text-white">Precisão clínica</h3></div>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-3 h-64 lg:h-[252px] lg:col-span-2">
+        <div class="gallery-inner gallery-3 w-full h-full"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[var(--fg)] via-[var(--fg)]/80 to-transparent flex items-center p-8">
+          <div class="max-w-sm">
+            <div class="text-xs tracking-[0.2em] text-gray-200 uppercase mb-2">Estética Dental</div>
+            <h3 class="font-display text-2xl text-white mb-2">Sorrisos naturais</h3>
+            <p class="text-sm text-gray-200">Resultados harmonizados que valorizam a sua expressão.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicos" class="relative py-28 bg-[var(--bg)]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <div class="reveal deco-line mb-8 mx-auto justify-center"><span>Tratamentos</span></div>
+      <h2 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-6 text-[var(--fg)]">Uma gama completa de <span class="headline-accent">cuidados</span> para o seu sorriso.</h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="service-card reveal">
+        <div class="service-icon mb-6"><i class="fas fa-tooth"></i></div>
+        <h3 class="font-display text-2xl text-[var(--fg)] mb-3">Clínica Geral</h3>
+        <p class="text-sm text-[var(--fg-dim)] mb-6 leading-relaxed">Avaliação, profilaxia, restaurações e acompanhamento contínuo da saúde bucal.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon mb-6"><i class="fas fa-teeth-open"></i></div>
+        <h3 class="font-display text-2xl text-[var(--fg)] mb-3">Estética Dental</h3>
+        <p class="text-sm text-[var(--fg-dim)] mb-6 leading-relaxed">Lentes de contato, facetas e clareamento de alta performance.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon mb-6"><i class="fas fa-teeth"></i></div>
+        <h3 class="font-display text-2xl text-[var(--fg)] mb-3">Implantes</h3>
+        <p class="text-sm text-[var(--fg-dim)] mb-6 leading-relaxed">Reabilitação de dentes perdidos com planejamento digital.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon mb-6"><i class="fas fa-grip-lines"></i></div>
+        <h3 class="font-display text-2xl text-[var(--fg)] mb-3">Ortodontia</h3>
+        <p class="text-sm text-[var(--fg-dim)] mb-6 leading-relaxed">Alinhamento e correção da mordida com aparelhos fixos ou alinhadores.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon mb-6"><i class="fas fa-child-reaching"></i></div>
+        <h3 class="font-display text-2xl text-[var(--fg)] mb-3">Odontopediatria</h3>
+        <p class="text-sm text-[var(--fg-dim)] mb-6 leading-relaxed">Cuidado especializado para os pequenos, em ambiente lúdico.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon mb-6"><i class="fas fa-bone"></i></div>
+        <h3 class="font-display text-2xl text-[var(--fg)] mb-3">Endodontia</h3>
+        <p class="text-sm text-[var(--fg-dim)] mb-6 leading-relaxed">Tratamento de canal com tecnologia rotatória e anestesia computadorizada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dentistas" class="relative py-28 overflow-hidden bg-[var(--bg-alt)]">
+  <div class="glow-orb" style="width:450px;height:450px;background:#00A6E0;top:300px;left:-200px;opacity:0.15;"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <div class="reveal deco-line mb-8 mx-auto justify-center"><span>Quem cuida de você</span></div>
+      <h2 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-6 text-[var(--fg)]">Mãos que constroem <span class="headline-accent">confiança</span>.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-6 max-w-6xl mx-auto">
+      
+      <div class="reveal relative rounded-[28px] overflow-hidden border border-[var(--border)] doc-card-1 doc-card shadow-xl min-h-[480px] flex flex-col justify-end p-8">
+        <span class="doc-monogram">A</span>
+        <div class="doc-icon-circle"><i class="fas fa-tooth text-3xl text-white"></i></div>
+        <div class="text-xs tracking-[0.3em] text-white/80 uppercase mb-2 font-bold">CRO-SP 45162</div>
+        <h3 class="font-display text-2xl text-white mb-4">Dr. André L. R. Carrera</h3>
+        <p class="text-sm text-gray-100 mb-6 leading-relaxed">Com formação contínua em implantodontia e reabilitação oral, une precisão técnica a um olhar atento às particularidades de cada paciente.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white">Implantodontia</span>
+          <span class="text-xs px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white">Reabilitação</span>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2 relative rounded-[28px] overflow-hidden border border-[var(--border)] doc-card-2 doc-card shadow-xl min-h-[480px] flex flex-col justify-end p-8">
+        <span class="doc-monogram">N</span>
+        <div class="doc-icon-circle"><i class="fas fa-teeth-open text-3xl text-white"></i></div>
+        <div class="text-xs tracking-[0.3em] text-white/80 uppercase mb-2 font-bold">CRO-SP 112600</div>
+        <h3 class="font-display text-2xl text-white mb-4">Drª Nathália G. M. Carrera</h3>
+        <p class="text-sm text-gray-100 mb-6 leading-relaxed">Especialista em estética dental e sorrisos harmonizados, transforma desejos em resultados naturais com sensibilidade apurada.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white">Estética Dental</span>
+          <span class="text-xs px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white">Planejamento</span>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-3 relative rounded-[28px] overflow-hidden border border-[var(--border)] doc-card-3 doc-card shadow-xl min-h-[480px] flex flex-col justify-end p-8 md:col-span-2 lg:col-span-1">
+        <span class="doc-monogram">T</span>
+        <div class="doc-icon-circle"><i class="fas fa-shield-heart text-3xl text-white"></i></div>
+        <div class="text-xs tracking-[0.3em] text-white/80 uppercase mb-2 font-bold">CRO-SP 116520</div>
+        <h3 class="font-display text-2xl text-white mb-4">Dr. Tito F. S. Carrera</h3>
+        <p class="text-sm text-gray-100 mb-6 leading-relaxed">Dedicado à saúde bucal integral, oferece tratamentos clínicos precisos com foco no bem-estar, conforto e longo prazo.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white">Clínica Geral</span>
+          <span class="text-xs px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white">Preventiva</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="diferenciais" class="relative py-28 bg-[var(--bg-soft)] overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-20">
+      <div class="lg:col-span-5 lg:sticky lg:top-32 lg:self-start">
+        <div class="reveal deco-line left mb-8"><span>Por que nos escolher</span></div>
+        <h2 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-8 text-[var(--fg)]">Cada detalhe pensado para a sua <span class="headline-accent">tranquilidade</span>.</h2>
+        <a href="#agendamento" class="reveal reveal-delay-3 btn-primary">Quero conhecer o consultório<i class="fas fa-arrow-right text-sm"></i></a>
+      </div>
+      <div class="lg:col-span-7">
+        <div class="reveal diff-item"><div class="diff-num mb-2">01</div><h3 class="font-display text-2xl text-[var(--fg)] mb-3">Planejamento individual</h3><p class="text-sm text-[var(--fg-dim)] leading-relaxed">Cada paciente recebe um plano de tratamento exclusivo, discutido em detalhes antes de qualquer procedimento.</p></div>
+        <div class="reveal reveal-delay-1 diff-item"><div class="diff-num mb-2">02</div><h3 class="font-display text-2xl text-[var(--fg)] mb-3">Tecnologia de ponta</h3><p class="text-sm text-[var(--fg-dim)] leading-relaxed">Equipamentos digitais e sistema de planejamento virtual para resultados previsíveis.</p></div>
+        <div class="reveal reveal-delay-2 diff-item"><div class="diff-num mb-2">03</div><h3 class="font-display text-2xl text-[var(--fg)] mb-3">Ambiente acolhedor</h3><p class="text-sm text-[var(--fg-dim)] leading-relaxed">Espaço projetado para reduzir a ansiedade e o medo de dentista.</p></div>
+        <div class="reveal reveal-delay-3 diff-item"><div class="diff-num mb-2">04</div><h3 class="font-display text-2xl text-[var(--fg)] mb-3">Equipe especializada</h3><p class="text-sm text-[var(--fg-dim)] leading-relaxed">Três profissionais dedicados a diferentes áreas da odontologia para um atendimento completo.</p></div>
+        <div class="reveal reveal-delay-4 diff-item"><div class="diff-num mb-2">05</div><h3 class="font-display text-2xl text-[var(--fg)] mb-3">Localização privilegiada</h3><p class="text-sm text-[var(--fg-dim)] leading-relaxed">No Parque Uirapuru, em Guarulhos, com fácil acesso.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="depoimentos" class="relative py-28 overflow-hidden bg-[var(--bg)]">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="reveal deco-line mb-8 mx-auto justify-center"><span>Quem confia, recomenda</span></div>
+      <h2 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-6 text-[var(--fg)]">Histórias reais de <span class="headline-accent">sorrisos</span>.</h2>
+    </div>
+    <div class="reveal reveal-delay-2 relative">
+      <div class="overflow-hidden">
+        <div id="testimonialTrack" class="testimonial-track">
+          <div class="testimonial-card"><div class="testimonial-inner">
+            <div class="flex gap-1 mb-6 relative z-10"><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i></div>
+            <p class="font-display text-2xl md:text-3xl font-light leading-relaxed text-[var(--fg)] mb-8 relative z-10">"Cheguei com receio de fazer facetas e saí com um sorriso que parece meu, só que muito mais bonito. A Dra. Nathália entendeu exatamente o que eu queria."</p>
+            <div class="flex items-center gap-4 relative z-10"><div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--accent-bright)] to-[var(--accent-deep)] flex items-center justify-center font-display text-lg text-white">M</div><div><div class="font-semibold text-[var(--fg)]">Mariana Souza</div><div class="text-xs text-[var(--muted)]">Facetas em resina · há 8 meses</div></div></div>
+          </div></div>
+          <div class="testimonial-card"><div class="testimonial-inner">
+            <div class="flex gap-1 mb-6 relative z-10"><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i></div>
+            <p class="font-display text-2xl md:text-3xl font-light leading-relaxed text-[var(--fg)] mb-8 relative z-10">"Depois de anos sem ir ao dentista por puro medo, encontrei no Dr. André um profissional paciente. Fiz tratamento de canal sem dor nenhuma. Recomendo."</p>
+            <div class="flex items-center gap-4 relative z-10"><div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--mint)] to-[var(--accent-deep)] flex items-center justify-center font-display text-lg text-white">R</div><div><div class="font-semibold text-[var(--fg)]">Ricardo Almeida</div><div class="text-xs text-[var(--muted)]">Tratamento endodôntico · há 1 ano</div></div></div>
+          </div></div>
+          <div class="testimonial-card"><div class="testimonial-inner">
+            <div class="flex gap-1 mb-6 relative z-10"><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i></div>
+            <p class="font-display text-2xl md:text-3xl font-light leading-relaxed text-[var(--fg)] mb-8 relative z-10">"Meu filho de 5 anos tinha pavor de dentista. Na primeira consulta com a equipe, ele saiu sorrindo e pedindo para voltar. Atendimento humanizado de verdade."</p>
+            <div class="flex items-center gap-4 relative z-10"><div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--accent-bright)] to-[var(--accent-deep)] flex items-center justify-center font-display text-lg text-white">P</div><div><div class="font-semibold text-[var(--fg)]">Patrícia Lima</div><div class="text-xs text-[var(--muted)]">Odontopediatria · há 6 meses</div></div></div>
+          </div></div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between mt-10">
+        <div class="flex gap-2" id="dots"><span class="dot active" data-index="0"></span><span class="dot" data-index="1"></span><span class="dot" data-index="2"></span></div>
+        <div class="flex gap-3">
+          <button id="prevTestimonial" class="w-12 h-12 rounded-full border border-[var(--border-strong)] flex items-center justify-center text-[var(--fg-dim)] hover:bg-[var(--accent-deep)] hover:text-white hover:border-[var(--accent-deep)] transition"><i class="fas fa-arrow-left text-sm"></i></button>
+          <button id="nextTestimonial" class="w-12 h-12 rounded-full border border-[var(--border-strong)] flex items-center justify-center text-[var(--fg-dim)] hover:bg-[var(--accent-deep)] hover:text-white hover:border-[var(--accent-deep)] transition"><i class="fas fa-arrow-right text-sm"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="agendamento" class="relative py-28 bg-[var(--bg-alt)] overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+      <div>
+        <div class="reveal deco-line left mb-8"><span>Vamos conversar</span></div>
+        <h2 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-8 text-[var(--fg)]">Agende sua <span class="headline-accent">avaliação</span> sem compromisso.</h2>
+        <div class="space-y-6">
+          
+          <a href="https://wa.me/5511974857543" class="reveal reveal-delay-2 flex items-start gap-5 group">
+            <div class="w-12 h-12 rounded-full bg-[var(--bg-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--mint)] group-hover:bg-[var(--mint)] group-hover:text-white transition shrink-0"><i class="fab fa-whatsapp"></i></div>
+            <div>
+              <div class="text-xs tracking-[0.2em] text-[var(--muted)] uppercase mb-1">Celular / WhatsApp</div>
+              <div class="font-display text-xl text-[var(--fg)] group-hover:text-[var(--accent-deep)] transition">+55 11 97485-7543</div>
+            </div>
+          </a>
+          
+          <a href="tel:+551124824074" class="reveal reveal-delay-2 flex items-start gap-5 group">
+            <div class="w-12 h-12 rounded-full bg-[var(--bg-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--accent-deep)] group-hover:bg-[var(--accent-deep)] group-hover:text-white transition shrink-0"><i class="fas fa-phone-alt"></i></div>
+            <div>
+              <div class="text-xs tracking-[0.2em] text-[var(--muted)] uppercase mb-1">Telefone Fixo</div>
+              <div class="font-display text-xl text-[var(--fg)] group-hover:text-[var(--accent-deep)] transition">(11) 2482-4074</div>
+            </div>
+          </a>
+          
+          <a href="mailto:drandrecarrera@hotmail.com" class="reveal reveal-delay-3 flex items-start gap-5 group">
+            <div class="w-12 h-12 rounded-full bg-[var(--bg-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--accent-deep)] group-hover:bg-[var(--accent-deep)] group-hover:text-white transition shrink-0"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="text-xs tracking-[0.2em] text-[var(--muted)] uppercase mb-1">E-mail</div>
+              <div class="font-display text-xl text-[var(--fg)] group-hover:text-[var(--accent-deep)] transition break-all">drandrecarrera@hotmail.com</div>
+            </div>
+          </a>
+
+          <div class="reveal reveal-delay-3 flex items-start gap-5">
+            <div class="w-12 h-12 rounded-full bg-[var(--bg-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--accent-deep)] shrink-0"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <div class="text-xs tracking-[0.2em] text-[var(--muted)] uppercase mb-1">Endereço</div>
+              <div class="font-display text-xl text-[var(--fg)] mb-1">Consultório Carrera</div>
+              <div class="text-sm text-[var(--fg-dim)] leading-relaxed">Passagem Pacoti, 23 - 03<br>Parque Uirapuru · Guarulhos - SP<br>CEP 07230-310</div>
+            </div>
+          </div>
+          
+          <div class="reveal reveal-delay-4 flex items-start gap-5">
+            <div class="w-12 h-12 rounded-full bg-[var(--bg-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--accent-deep)] shrink-0"><i class="fas fa-clock"></i></div>
+            <div>
+              <div class="text-xs tracking-[0.2em] text-[var(--muted)] uppercase mb-1">Horários</div>
+              <div class="text-sm text-[var(--fg-dim)] leading-relaxed">
+                Segunda a Quinta: 09h às 19h<br>
+                <span class="text-[var(--mint)] font-semibold">Outros dias sob agendamento prévio</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="reveal reveal-delay-2">
+        <div class="bg-[var(--bg-soft)] border border-[var(--border-strong)] rounded-3xl p-8 lg:p-10 backdrop-blur-xl text-center h-full flex flex-col justify-center min-h-[400px] shadow-xl">
+          <div class="w-20 h-20 rounded-full bg-white border-2 border-[var(--mint)] flex items-center justify-center mx-auto mb-6 shadow-lg">
+             <i class="fab fa-whatsapp text-3xl text-[var(--mint)]"></i>
+          </div>
+          <h3 class="font-display text-3xl text-[var(--fg)] mb-4">Fale direto no Celular</h3>
+          <p class="text-sm text-[var(--fg-dim)] mb-8 max-w-sm mx-auto">Para agilizar seu atendimento, chame no WhatsApp. Respondemos rapidamente durante o horário comercial.</p>
+          
+          <a href="https://wa.me/5511974857543" target="_blank" class="btn-primary max-w-xs mx-auto">
+             <i class="fab fa-whatsapp text-base"></i> Iniciar conversa
+          </a>
+          
+          <div class="mt-8 pt-8 border-t border-[var(--border-strong)] text-sm text-[var(--fg-dim)]">
+            ou ligue no <a href="tel:+5511974857543" class="text-[var(--accent-deep)] font-bold">+55 11 97485-7543</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="relative py-28 overflow-hidden bg-[var(--bg)]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="reveal deco-line mb-8 mx-auto justify-center"><span>Onde estamos</span></div>
+      <h2 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-6 text-[var(--fg)]">Venha nos <span class="headline-accent">visitar</span>.</h2>
+      <p class="reveal reveal-delay-2 text-[var(--fg-dim)] text-lg">Estamos no coração do Parque Uirapuru, com fácil acesso e estrutura preparada para o seu conforto.</p>
+    </div>
+    <div class="reveal reveal-delay-2 grid lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-2" style="border-radius: 24px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 10px 30px -15px rgba(12, 42, 67, 0.1);">
+        <iframe src="https://www.google.com/maps?q=Passagem+Pacoti,+23+-+03+Parque+Uirapuru+Guarulhos+07230-310&output=embed" width="100%" height="500" style="border:0; display:block; filter: hue-rotate(180deg) saturate(0.8);" loading="lazy"></iframe>
+      </div>
+      <div class="space-y-6">
+        <div class="bg-[var(--bg-alt)] border border-[var(--border)] rounded-2xl p-6 shadow-sm">
+          <div class="flex items-center gap-3 mb-3"><i class="fas fa-map-marker-alt text-[var(--accent-deep)]"></i><h4 class="font-display text-lg text-[var(--fg)]">Endereço</h4></div>
+          <p class="text-sm text-[var(--fg-dim)] leading-relaxed">Passagem Pacoti, 23 - 03<br>Parque Uirapuru<br>Guarulhos - SP · 07230-310</p>
+        </div>
+        <div class="bg-[var(--bg-alt)] border border-[var(--border)] rounded-2xl p-6 shadow-sm">
+          <div class="flex items-center gap-3 mb-3"><i class="fas fa-route text-[var(--accent-deep)]"></i><h4 class="font-display text-lg text-[var(--fg)]">Como chegar</h4></div>
+          <p class="text-sm text-[var(--fg-dim)] leading-relaxed mb-4">Próximo ao Parque Uirapuru.</p>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Passagem+Pacoti,+23+Guarulhos+07230-310" target="_blank" class="inline-flex items-center gap-2 text-sm text-[var(--accent-deep)] font-bold hover:gap-3 transition-all">Traçar rota<i class="fas fa-external-link-alt text-xs"></i></a>
+        </div>
+        <div class="bg-gradient-to-br from-[var(--bg-soft)] to-white border border-[var(--border-strong)] rounded-2xl p-6 shadow-sm">
+          <div class="flex items-center gap-3 mb-3"><i class="fas fa-calendar-check text-[var(--accent-deep)]"></i><h4 class="font-display text-lg text-[var(--fg)]">Atendimento</h4></div>
+          <p class="text-sm text-[var(--fg-dim)] leading-relaxed">Seg a Qui: 09h às 19h<br>Outros dias sob agendamento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="relative py-24 overflow-hidden bg-[var(--accent-deep)]">
+  <div class="glow-orb" style="width:600px;height:600px;background:#00A6E0;top:-200px;left:50%;transform:translateX(-50%);opacity:0.3;"></div>
+  <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center relative z-10">
+    <div class="reveal deco-line mb-8 mx-auto justify-center" style="color:rgba(255,255,255,0.8);"><span style="color:rgba(255,255,255,0.8);">André Carrera Odontologia</span></div>
+    <h2 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-light leading-tight mb-8 text-white">O próximo sorriso<br><span class="headline-accent">a brilhar</span> é o seu.</h2>
+    <div class="reveal reveal-delay-3 flex flex-wrap gap-4 justify-center">
+      <a href="https://wa.me/5511974857543" class="btn-primary"><i class="fab fa-whatsapp text-sm"></i>Chamar no WhatsApp</a>
+      <a href="mailto:drandrecarrera@hotmail.com" class="btn-outline" style="color:#fff; border-color:rgba(255,255,255,0.6);"><i class="fas fa-envelope text-sm"></i>Enviar e-mail</a>
+    </div>
+  </div>
+</section>
+
+<footer class="relative py-16 bg-[var(--fg)]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 text-center">
+    <a href="#hero" class="inline-flex items-center gap-3 mb-6">
+      <div class="relative w-11 h-11 rounded-full bg-[var(--accent-bright)] flex items-center justify-center"><span class="font-display text-xl text-[var(--fg)]">C</span></div>
+      <div class="leading-tight text-left">
+        <div class="font-display text-lg tracking-wide text-white">André Carrera</div>
+        <div class="text-[10px] tracking-[0.3em] text-[var(--accent-bright)] uppercase font-bold">Odontologia</div>
+      </div>
+    </a>
+    <p class="text-sm text-gray-400 max-w-md mx-auto mb-6">Consultório André Carrera. Cuidando de sorrisos no Parque Uirapuru, Guarulhos.</p>
+    <div class="flex justify-center gap-4 mb-8">
+      <a href="https://www.instagram.com/consultorioandrecarrera/" target="_blank" class="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:border-[var(--accent-bright)] hover:text-[var(--accent-bright)] transition"><i class="fab fa-instagram text-sm"></i></a>
+      <a href="https://wa.me/5511974857543" target="_blank" class="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:border-[var(--accent-bright)] hover:text-[var(--accent-bright)] transition"><i class="fab fa-whatsapp text-sm"></i></a>
+    </div>
+    <p class="text-xs text-gray-500">© <span id="year"></span> Consultório André Carrera. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const particlesContainer = document.getElementById('particles');
+  if (particlesContainer) {
+    for (let i = 0; i < 24; i++) {
+      const p = document.createElement('span'); p.className = 'particle';
+      const size = Math.random() * 3 + 1; p.style.width = size + 'px'; p.style.height = size + 'px';
+      p.style.left = Math.random() * 100 + '%'; p.style.bottom = '-10px';
+      p.style.animationDuration = (Math.random() * 12 + 10) + 's'; p.style.animationDelay = (Math.random() * 15) + 's';
+      particlesContainer.appendChild(p);
+    }
+  }
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  const counters = document.querySelectorAll('[data-count]');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target; const target = parseInt(el.dataset.count); const duration = 2000; const start = performance.now();
+        const animate = (now) => { const elapsed = now - start; const progress = Math.min(elapsed / duration, 1); const eased = 1 - Math.pow(1 - progress, 3); const current = Math.floor(eased * target); el.textContent = current.toLocaleString('pt-BR'); if (progress < 1) requestAnimationFrame(animate); else el.textContent = target.toLocaleString('pt-BR'); };
+        requestAnimationFrame(animate); counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterObserver.observe(c));
+
+  const menuToggle = document.getElementById('menuToggle'); const mobileMenu = document.getElementById('mobileMenu');
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => { mobileMenu.classList.toggle('open'); menuToggle.innerHTML = mobileMenu.classList.contains('open') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'; });
+    document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuToggle.innerHTML = '<i class="fas fa-bars"></i>'; }));
+  }
+
+  const track = document.getElementById('testimonialTrack'); const dots = document.querySelectorAll('.dot'); const prevBtn = document.getElementById('prevTestimonial'); const nextBtn = document.getElementById('nextTestimonial');
+  let currentIndex = 0; const total = 3;
+  function updateCarousel() { track.style.transform = `translateX(-${currentIndex * 100}%)`; dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex)); }
+  function next() { currentIndex = (currentIndex + 1) % total; updateCarousel(); } function prev() { currentIndex = (currentIndex - 1 + total) % total; updateCarousel(); }
+  if (nextBtn && prevBtn) {
+    nextBtn.addEventListener('click', next); prevBtn.addEventListener('click', prev);
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { currentIndex = i; updateCarousel(); }));
+    let autoSlide = setInterval(next, 7000);
+  }
+
+  document.querySelectorAll('.service-card').forEach(card => { card.addEventListener('mousemove', (e) => { const rect = card.getBoundingClientRect(); const x = ((e.clientX - rect.left) / rect.width) * 100; const y = ((e.clientY - rect.top) / rect.height) * 100; card.style.setProperty('--mx', x + '%'); card.style.setProperty('--my', y + '%'); }); });
+</script>
 
 </body>
 </html>
